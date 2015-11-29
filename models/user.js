@@ -72,7 +72,6 @@ module.exports = function(sequelize, DataTypes){
                             var decodedJWT = jwt.verify(token, 'querty098');
                             var bytes = cryptojs.AES.decrypt(decodedJWT.token,'abc123');
                             var tokenData = JSON.parse(bytes.toString(cryptojs.enc.Utf8));
-console.log('tokenData.id is ', tokenData.id);
                             user.findById(tokenData.id)
                                 .then(function(user){
                                     if (user){
